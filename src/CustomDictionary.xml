@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Dictionary>
+  
+  <Words>
+    
+    <!-- new words not in the default dictionary -->
+    <Recognized>
+      <Word>CSLA</Word>
+      <Word>Configurator</Word>
+      <Word>Injectable</Word>
+    </Recognized>
+    
+    <!-- words in the default dictionary that you don't want to be recognized -->
+    <Unrecognized>
+      <!--
+      <Word>example</Word>
+      -->
+    </Unrecognized>
+    
+    <!-- words that should be replaced with a newer term -->
+    <Depricated>
+      <!--
+      <Term PreferredAlternate="EnterpriseServices">ComPlus</Term>
+      -->
+    </Depricated>
+    
+  </Words>
+  
+  <Acronyms>
+    
+    <!-- acronymns that require an exception to the normal casing rules -->
+    <CasingExceptions>
+      <!--
+      <Acronym>Db</Acronym>
+      -->
+    </CasingExceptions>
+    
+  </Acronyms>
+  
+</Dictionary>

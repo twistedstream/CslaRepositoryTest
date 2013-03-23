@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="Orders" Class="OrdersDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=&quot;D:\docs\Visual Studio 2008\Projects\CslaRepositoryTest\src\Orders.mdf&quot;;Integrated Security=True;Connect Timeout=30;User Instance=True" SettingsObjectName="CslaRepositoryTest.DataAccess.SqlServerRepository.Properties.Settings" SettingsPropertyName="OrdersConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.line_item" Member="LineItems">
+    <Type Name="LineItem">
+      <Column Name="id" Member="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="order_id" Member="OrderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="product_name" Member="ProductName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="price" Member="Price" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="quantity" Member="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="timestamp" Member="Timestamp" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Order_LineItem" Member="Order" ThisKey="OrderId" OtherKey="Id" Type="Order" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[order]" Member="Orders">
+    <Type Name="Order">
+      <Column Name="id" Member="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="customer" Member="Customer" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="date" Member="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="shipping_cost" Member="ShippingCost" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="timestamp" Member="Timestamp" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Order_LineItem" Member="LineItems" ThisKey="Id" OtherKey="OrderId" Type="LineItem" />
+    </Type>
+  </Table>
+  <Function Name="dbo.delete_order" Method="delete_order">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insert_order" Method="insert_order">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="customer" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="shipping_cost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="timestamp" Type="System.Data.Linq.Binary" DbType="Timestamp" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.update_order" Method="update_order">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="customer" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="shipping_cost" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="old_timestamp" Type="System.Data.Linq.Binary" DbType="Timestamp" />
+    <Parameter Name="timestamp" Type="System.Data.Linq.Binary" DbType="Timestamp" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.delete_line_item" Method="delete_line_item">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="order_id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insert_line_item" Method="insert_line_item">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="order_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="product_name" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="price" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="quantity" Type="System.Int32" DbType="Int" />
+    <Parameter Name="timestamp" Type="System.Data.Linq.Binary" DbType="Timestamp" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.update_line_item" Method="update_line_item">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="order_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="product_name" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="price" Type="System.Decimal" DbType="Money" />
+    <Parameter Name="quantity" Type="System.Int32" DbType="Int" />
+    <Parameter Name="old_timestamp" Type="System.Data.Linq.Binary" DbType="Timestamp" />
+    <Parameter Name="timestamp" Type="System.Data.Linq.Binary" DbType="Timestamp" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
